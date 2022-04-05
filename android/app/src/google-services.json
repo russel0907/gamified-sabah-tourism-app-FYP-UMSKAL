@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "82643305706",
+    "project_id": "gamified-tourism-app",
+    "storage_bucket": "gamified-tourism-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82643305706:android:419cd4adee05ea7aa8c393",
+        "android_client_info": {
+          "package_name": "com.example.fyp_tourism"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82643305706-sr0bv3naatnhanp5o032kok4u29jes45.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fyp_tourism",
+            "certificate_hash": "32d51dc25777cb818a3840cefa529cdd14f48e5a"
+          }
+        },
+        {
+          "client_id": "82643305706-q9i2hhanfmh8uc6rlflts9vmh4pnejsj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvKXXa8N-5ixjWGS1iHc6kTcFTH5hqw3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82643305706-q9i2hhanfmh8uc6rlflts9vmh4pnejsj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
