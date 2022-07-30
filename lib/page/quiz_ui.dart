@@ -25,7 +25,7 @@ class _QuizUIState extends State<QuizUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Colors.white,
       appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.blueAccent,
@@ -73,47 +73,88 @@ class _QuizUIState extends State<QuizUI> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       colorFilter: ColorFilter.mode(
-                          Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                          Colors.black.withOpacity(1), BlendMode.dstATop),
                       image: AssetImage(
                           'img/background_ui/background_kiuluvalley.jpeg'),
                       fit: BoxFit.cover,
                     ),
-                    border: Border.all(
-                      color: Colors.black26,
-                    ),
-                    borderRadius: BorderRadius.circular(4),
+                    // border: Border.all(
+                    //   color: Colors.black26,
+                    // ),
+                    borderRadius: BorderRadius.circular(5),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.6),
+                        spreadRadius: 1,
+                        blurRadius: 3,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
                   ),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 10),
-                        width: 140,
-                        height: 125,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image:
-                                    AssetImage('img/places/Kiulu Valley.jpg'),
-                                fit: BoxFit.cover),
-                            border: Border.all(
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.circular(4)),
+                          child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            QuizKiuluValleyUI()));
+                              },
+                              child: Text(
+                                'Kiulu Valley',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 32),
+                              )))
+                    ],
+                  ))),
+          Padding(padding: EdgeInsets.only(bottom: 15)),
+          Expanded(
+              flex: 1,
+              child: Container(
+                  height: 140,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(1), BlendMode.dstATop),
+                      image: AssetImage(
+                          'img/background_ui/background_crockerrange.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                    // border: Border.all(
+                    //   color: Colors.black26,
+                    // ),
+                    borderRadius: BorderRadius.circular(5),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.6),
+                        spreadRadius: 1,
+                        blurRadius: 3,
+                        offset: Offset(0, 3), // changes position of shadow
                       ),
-                      Expanded(
-                          child: Center(
-                              child: TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                QuizKiuluValleyUI()));
-                                  },
-                                  child: Text(
-                                    'Kiulu Valley',
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 25),
-                                  ))))
+                    ],
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                          child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            QuizKiuluValleyUI()));
+                              },
+                              child: Text(
+                                'Crocker Range',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 32),
+                              )))
                     ],
                   ))),
           Padding(padding: EdgeInsets.only(bottom: 15)),

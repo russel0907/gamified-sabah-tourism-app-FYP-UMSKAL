@@ -145,7 +145,7 @@ class _QRScannerUIState extends State<QRScannerUI> {
       });
     } catch (e) {
       setState(() {
-        qrString = "Unable to read QR";
+        qrString = "No Available Qr";
       });
     }
   }

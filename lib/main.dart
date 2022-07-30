@@ -6,6 +6,7 @@ import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
 import 'package:home_interfaces/page/homebeforelogin_ui.dart';
 import 'package:home_interfaces/page/loginscreen_ui.dart';
 import 'package:home_interfaces/page/databasestorytesting_ui.dart';
+import 'package:home_interfaces/page/topplaces.dart';
 import 'page/story_ui.dart';
 import 'page/rankingplaces_ui.dart';
 import 'page/quiz_ui.dart';
@@ -200,7 +201,7 @@ class AppUI extends StatefulWidget {
 class _AppUIState extends State<AppUI> {
   int currentIndex = 0;
   final screens = [
-    HomeUI(),
+    PlaceUI(),
     QuizUI(),
     QRScannerUI(),
     LeaderboardUI(),
@@ -216,9 +217,9 @@ class _AppUIState extends State<AppUI> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.blueAccent,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white38,
+        backgroundColor: Color(0xff75E2FF),
+        selectedItemColor: Color(0xff2b2b2b),
+        unselectedItemColor: Colors.black38,
         currentIndex: currentIndex,
         onTap: (index) => setState(() => currentIndex = index),
         items: [
