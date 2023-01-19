@@ -61,12 +61,8 @@ class _ForgotPassState extends State<ForgotPass> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5,
+      child: ElevatedButton(
         onPressed: () => print('Reset Pressed'),
-        padding: EdgeInsets.all(15),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Colors.white,
         child: Text(
           'Reset',
           style: TextStyle(
@@ -80,15 +76,11 @@ class _ForgotPassState extends State<ForgotPass> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5,
+      child: ElevatedButton(
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => LoginScreen()));
         },
-        padding: EdgeInsets.all(15),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Colors.white,
         child: Text(
           'Back',
           style: TextStyle(

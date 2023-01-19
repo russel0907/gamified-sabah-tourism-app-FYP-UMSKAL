@@ -17,15 +17,6 @@ void main() {
   ));
 }
 
-// Future getDocs() async {
-//   QuerySnapshot querySnapshot =
-//       await FirebaseFirestore.instance.collection("places").get();
-//   for (int i = 0; i < querySnapshot.docs.length; i++) {
-//     var a = querySnapshot.docs[i];
-//     print(a.id);
-//   }
-// }
-
 class PlaceUI extends StatefulWidget {
   @override
   _PlaceState createState() => _PlaceState();
@@ -34,69 +25,7 @@ class PlaceUI extends StatefulWidget {
 class _PlaceState extends State<PlaceUI> {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
-  // var results = [];
-
-  // _makelist() async {
-  //   for (var i = 0; i < Place.length; i++) {
-  //     final TourismPlace = Place[i];
-  //     final String? TourismTitle = TourismPlace["PlaceTitle"];
-  //     final String? TourismPicture = TourismPlace["PlacePicture"];
-  //     final String? TourismPicture2 = TourismPlace["PlacePicture2"];
-  //     final String? TourismPicture3 = TourismPlace["PlacePicture3"];
-  //     final String? TourismStory = TourismPlace["PlaceStory"];
-  //     final String? BackgroundStory = TourismPlace["BackgroundPicture"];
-  //     final String? Tour = TourismPlace["Tour"];
-  //     final String? Accomodation = TourismPlace["Accomodation"];
-  //     final String? Travel = TourismPlace["Travel"];
-  //     final String? Reference = TourismPlace["Reference"];
-
-  //     RegisteredPlaces.add(Container(
-  //       color: Colors.lightBlueAccent,
-  //       padding: EdgeInsets.all(9),
-  //       child: Card(
-  //         child: Column(
-  //           children: <Widget>[
-  //             Hero(
-  //               tag: TourismPlace['PlaceName']!,
-  //               child: Material(
-  //                 child: InkWell(
-  //                   onTap: () => Navigator.of(context).push(MaterialPageRoute(
-  //                       builder: (BuildContext context) => PlaceDetail(
-  //                             PlaceName: TourismPlace["PlaceName"]!,
-  //                             PlaceTitle: TourismTitle!,
-  //                             PlacePicture: TourismPicture!,
-  //                             PlacePicture2: TourismPicture2!,
-  //                             PlacePicture3: TourismPicture3!,
-  //                             PlaceStory: TourismStory!,
-  //                             BackgroundPicture: BackgroundStory!,
-  //                             Tour: Tour!,
-  //                             Accomodation: Accomodation!,
-  //                             Travel: Travel!,
-  //                             Reference: Reference!,
-  //                           ))),
-  //                   child: Image.asset(
-  //                     "img/background_ui/$BackgroundStory",
-  //                     fit: BoxFit.fill,
-  //                   ),
-  //                 ),
-  //               ),
-  //             ),
-  //             Expanded(
-  //                 child: Container(
-  //               color: Colors.white38,
-  //               child: Center(
-  //                 child: Text(TourismPlace['PlaceName']!,
-  //                     textAlign: TextAlign.center,
-  //                     style: TextStyle(
-  //                         fontSize: 12, fontWeight: FontWeight.normal)),
-  //               ),
-  //             ))
-  //           ],
-  //         ),
-  //       ),
-  //     ));
-  //   }
-  // }
+  final tourRef = FirebaseFirestore.instance.collection('places');
 
   @override
   void initState() {
@@ -110,62 +39,8 @@ class _PlaceState extends State<PlaceUI> {
         .then((value) {
       loggedInUser = UserModel.fromMap(value.data());
     });
-    // getData();
   }
 
-  // final placeRef = FirebaseFirestore.instance.collection('places');
-  // var data = [];
-  // getImage() async {
-  //   await placeRef.get().then((QuerySnapshot snapshot) {
-  //     // for (var doc in snapshot.docs) {
-  //     //   Map results = jsonDecode(doc.id);
-  //     //   listplace = StoryModel.fromMap(doc.data());
-  //     //   print(results);
-  //     //   print(listplace);
-  //     // }
-  //     snapshot.docs.forEach((element) {
-  //       print(element.id);
-  //       print(element.data());
-
-  //       // Map results = jsonDecode(element.data());
-  //       // setState(() {
-  //       //   data = element.data();
-  //       // });
-  //     });
-  //   });
-  // }
-  // final placeRef = FirebaseFirestore.instance.collection('places');
-
-  // List<Container> data = [];
-  // getPlace() async {
-  // Get docs from collection reference
-  // final QuerySnapshot querySnapshot = await placeRef.get();
-  // setState(() {
-  //   data = querySnapshot.docs;
-  //   print(data);
-  //   for (var i = 0; i < data.length; i++) {
-  //      final List<Text> children = data.map((e) {
-
-  //      })
-  //   }
-  // });
-  // }
-
-  // final _fireStore = FirebaseFirestore.instance;
-  // final List<Text> RegisteredPlaces = [];
-  // Future<void> getData() async {
-  //   // Get docs from collection reference
-  //   QuerySnapshot querySnapshot = await _fireStore.collection('places').get();
-
-  //   // Get data from docs and convert map to List
-  //   final List<dynamic> allData =
-  //       querySnapshot.docs.map((doc) => doc.data()).toList();
-  //   print(allData);
-  //   for (var i = 0; i < allData.length; i++) {
-  //     final place = allData[i];
-  //     return RegisteredPlaces.add(Text(place.toString()));
-  //   }
-  // }
   int categoriescurrentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -199,8 +74,7 @@ class _PlaceState extends State<PlaceUI> {
               color: Color(0xffEAEBED),
               height: MediaQuery.of(context).size.height * 0.78,
               child: StreamBuilder(
-                stream:
-                    FirebaseFirestore.instance.collection('places').snapshots(),
+                stream: tourRef.snapshots(),
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.hasError) {
                     return Text('Error');

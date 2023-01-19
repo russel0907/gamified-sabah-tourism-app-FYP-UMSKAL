@@ -164,13 +164,12 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget buildForgotPassBtn() {
     return Container(
       alignment: Alignment.centerRight,
-      child: FlatButton(
+      child: TextButton(
         onPressed: () {
           print("Forgot Password Pressed");
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => ForgotPass()));
         },
-        padding: EdgeInsets.only(right: 0),
         child: Text(
           'Forgot Password ?',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
@@ -183,15 +182,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 100, vertical: 12),
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5,
+      child: ElevatedButton(
         onPressed: () {
           {
             signIn(emailController.text, passwordController.text);
           }
         },
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Colors.white,
         child: Text(
           'Login',
           style: TextStyle(

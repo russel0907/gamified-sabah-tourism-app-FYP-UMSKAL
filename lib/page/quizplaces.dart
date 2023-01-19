@@ -30,7 +30,6 @@ class _QuizUIState extends State<QuizUI> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-            elevation: 1,
             automaticallyImplyLeading: false,
             backgroundColor: Colors.blueAccent,
             title: Row(

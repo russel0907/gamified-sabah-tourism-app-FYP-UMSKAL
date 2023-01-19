@@ -1514,11 +1514,7 @@ class Answer extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.only(bottom: 5, top: 5),
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(16.0))),
-        color: Colors.white,
-        textColor: Colors.black,
+      child: ElevatedButton(
         child: Text(answerText),
         onPressed: selectHandler,
       ), //RaisedButton
@@ -1593,12 +1589,11 @@ class Result extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ), //Text
-                  FlatButton(
+                  TextButton(
                     child: Text(
                       'Restart Quiz!',
                       style: TextStyle(fontSize: 16),
                     ), //Text
-                    textColor: Colors.redAccent,
                     onPressed: resetHandler,
                   ),
                   SizedBox(
@@ -1774,14 +1769,7 @@ class _QRScannerbeforeloginUIState extends State<QRScannerbeforeloginUI> {
                                               child: SizedBox(
                                                 width: double.infinity,
 
-                                                child: RaisedButton(
-                                                    shape: RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    16.0))),
-                                                    color: Colors.white,
-                                                    textColor: Colors.black,
+                                                child: ElevatedButton(
                                                     child: Text('Scan'),
                                                     onPressed:
                                                         () {}), //RaisedButton

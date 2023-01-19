@@ -119,13 +119,11 @@ class _QRScannerUIState extends State<QRScannerUI> {
 
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10.0, right: 10),
-                    child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(16.0))),
-                        color: Colors.white,
-                        textColor: Colors.black,
-                        child: Text('Scan'),
+                    child: ElevatedButton(
+                        child: Text('Scan',
+                            style: TextStyle(
+                              color: Colors.black,
+                            )),
                         onPressed: scanQR),
                   ), //RaisedButton
                 ))

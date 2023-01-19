@@ -383,14 +383,10 @@ class _SignupState extends State<Signup> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5,
+      child: ElevatedButton(
         onPressed: () {
           signUp(EmailEditingController.text, PasswordEditingController.text);
         },
-        padding: EdgeInsets.all(15),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Colors.white,
         child: Text(
           'Register',
           style: TextStyle(
