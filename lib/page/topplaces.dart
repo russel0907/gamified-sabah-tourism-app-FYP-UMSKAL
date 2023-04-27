@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:home_interfaces/model/user_model.dart';
+import 'package:home_interfaces/widget/appbar.dart';
 
 import 'detailscreen_ui.dart';
 // import 'package:home_interfaces/page/aboutus_ui.dart';
@@ -45,27 +46,7 @@ class _PlaceState extends State<PlaceUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          backgroundColor: Color(0xffEAEBED),
-          shadowColor: null,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                'Top Places In Sabah',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    color: Color(0xff2b2b2b),
-                    fontFamily: 'Monserrat',
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold),
-              ),
-              Spacer(),
-              Spacer(),
-            ],
-          )),
+      appBar: appBar(title: 'Top Places In Sabah'),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

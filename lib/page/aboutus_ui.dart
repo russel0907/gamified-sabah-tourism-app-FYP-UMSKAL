@@ -47,7 +47,7 @@ class AboutUsUI extends StatelessWidget {
                               color: Colors.black,
                             ),
                             borderRadius: BorderRadius.circular(
-                                20) // use instead of BorderRadius.all(Radius.circular(20))
+                                20) 
                             ),
                         child: Center(
                             child: Text(
