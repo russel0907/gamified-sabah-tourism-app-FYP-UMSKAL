@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:home_interfaces/constant/const.dart';
 import 'package:home_interfaces/model/user_model.dart';
 import 'package:home_interfaces/widget/appbar.dart';
 
@@ -46,14 +47,15 @@ class _PlaceState extends State<PlaceUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kPrimaryColor,
       appBar: appBar(title: 'Top Places In Sabah'),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              color: Color(0xffEAEBED),
-              height: MediaQuery.of(context).size.height * 0.78,
+              color: kPrimaryColor,
+              height: MediaQuery.of(context).size.height,
               child: StreamBuilder(
                 stream: tourRef.snapshots(),
                 builder: (context, AsyncSnapshot snapshot) {
@@ -82,10 +84,10 @@ class _PlaceState extends State<PlaceUI> {
                             child: Card(
                               semanticContainer: true,
                               clipBehavior: Clip.antiAliasWithSaveLayer,
-                              elevation: 12,
-                              color: Color(0xff75E2FF),
+                              elevation: 0,
+                              color: kSecondaryColor,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12)),
+                                  borderRadius: BorderRadius.circular(10)),
                               child: InkWell(
                                 onTap: () {
                                   Navigator.push(
@@ -110,8 +112,8 @@ class _PlaceState extends State<PlaceUI> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: Color(0xff2b2b2b),
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w400,
                                           )),
                                     ),
                                   ],

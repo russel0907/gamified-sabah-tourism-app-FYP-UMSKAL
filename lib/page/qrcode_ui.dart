@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:home_interfaces/constant/const.dart';
+import 'package:home_interfaces/widget/appbar.dart';
 import 'aboutus_ui.dart';
 
 class QRScannerUI extends StatefulWidget {
@@ -14,34 +16,10 @@ class _QRScannerUIState extends State<QRScannerUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
-      appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.blueAccent,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AboutUsUI()));
-                },
-                icon: Image.asset('img/logo/logo.png'),
-                iconSize: 50,
-              ),
-              Spacer(),
-              Center(
-                child: Text(
-                  "Scan Places",
-                  style: TextStyle(color: Colors.white, fontSize: 25.0),
-                ),
-              ),
-              Spacer(),
-              Spacer(),
-            ],
-          )),
+      backgroundColor: kPrimaryColor,
+      appBar: appBar(title: 'Scan Places'),
       body: Container(
-        color: Colors.lightBlueAccent,
+        color: kPrimaryColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,6 +32,7 @@ class _QRScannerUIState extends State<QRScannerUI> {
                   fit: BoxFit.fitWidth,
                 ),
               ),
+              height: 250,
               child: Center(
                   child: Image(
                 width: 200,
@@ -61,70 +40,68 @@ class _QRScannerUIState extends State<QRScannerUI> {
                   'img/logo/logo.png',
                 ),
               )),
-              height: 250,
             ),
             Expanded(
                 child: Center(
-              child: Container(
-                color: Colors.lightBlueAccent,
-                child: Column(
-                  children: [
-                    Padding(padding: EdgeInsets.only(bottom: 10)),
-                    Expanded(
-                        flex: 0,
-                        child: Container(
-                            margin: EdgeInsets.all(10),
-                            child: Center(
-                                child: Text(
-                              'CHECK-IN',
-                              style: TextStyle(fontSize: 30),
-                            )))),
-                    Expanded(
-                        flex: 0,
-                        child: Container(
-                            margin: EdgeInsets.all(5),
-                            child: Center(
-                                child: Text(
-                              'Scan the qr code to indicate you arrived there using our app!',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 17,
+              child: Column(
+                children: [
+                  Padding(padding: EdgeInsets.only(bottom: 10)),
+                  Expanded(
+                      flex: 0,
+                      child: Container(
+                          margin: EdgeInsets.all(10),
+                          child: Center(
+                              child: Text(
+                            'CHECK-IN',
+                            style: TextStyle(fontSize: 30),
+                          )))),
+                  Expanded(
+                      flex: 0,
+                      child: Container(
+                          margin: EdgeInsets.all(5),
+                          child: Center(
+                              child: Text(
+                            'Scan the qr code to indicate you arrived there using our app!',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
+                          )))),
+                  Expanded(
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              border: Border.all(
+                                color: Colors.black45,
                               ),
-                            )))),
-                    Expanded(
-                        child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                border: Border.all(
-                                  color: Colors.black45,
-                                ),
-                                borderRadius: BorderRadius.circular(5)),
-                            margin: EdgeInsets.all(10),
-                            child: Center(
-                                child: Text(
-                              qrString,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.bold),
-                            )))),
-                  ],
-                ),
+                              borderRadius: BorderRadius.circular(5)),
+                          margin: EdgeInsets.all(10),
+                          child: Center(
+                              child: Text(
+                            qrString,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 19, fontWeight: FontWeight.bold),
+                          )))),
+                ],
               ),
             )),
             Expanded(
                 flex: 0,
                 child: SizedBox(
                   width: double.infinity,
-
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10.0, right: 10),
                     child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: kSecondaryColor,
+                        ),
+                        onPressed: scanQR,
                         child: Text('Scan',
                             style: TextStyle(
                               color: Colors.black,
-                            )),
-                        onPressed: scanQR),
+                            ))),
                   ), //RaisedButton
                 ))
           ],

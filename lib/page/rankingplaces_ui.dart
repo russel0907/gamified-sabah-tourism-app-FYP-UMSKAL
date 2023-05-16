@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:home_interfaces/constant/const.dart';
+import 'package:home_interfaces/widget/appbar.dart';
 import 'aboutus_ui.dart';
 import 'profile_ui.dart';
 
@@ -17,33 +19,9 @@ class _LeaderboardUIState extends State<LeaderboardUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: kPrimaryColor,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.blueAccent,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AboutUsUI()));
-                },
-                icon: Image.asset('img/logo/logo.png'),
-                iconSize: 50,
-              ),
-              Spacer(),
-              Center(
-                child: Text(
-                  "Ranking Places",
-                  style: TextStyle(color: Colors.white, fontSize: 25.0),
-                ),
-              ),
-              Spacer(),
-              Spacer(),
-            ],
-          )),
+      appBar: appBar(title: 'Ranking Places'),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('ranking')

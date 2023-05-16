@@ -43,14 +43,9 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 50,
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2))
-                  ]),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             TextFormField(
               autofocus: false,
@@ -111,14 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 50,
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(0, 2))
-                  ]),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             TextFormField(
               autofocus: false,
@@ -172,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         child: Text(
           'Forgot Password ?',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal),
         ),
       ),
     );
@@ -180,9 +170,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget buildLoginBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
       width: double.infinity,
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(32.0))),
+          primary: Colors.blueAccent,
+        ),
         onPressed: () {
           {
             signIn(emailController.text, passwordController.text);
@@ -191,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Text(
           'Login',
           style: TextStyle(
-              color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -209,14 +205,14 @@ class _LoginScreenState extends State<LoginScreen> {
           TextSpan(
               text: 'Don\'t have an Account?',
               style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500)),
+                  color: Colors.black,
+                  fontSize: 18  ,
+                  fontWeight: FontWeight.normal)),
           TextSpan(
               text: '  Sign Up',
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold))
         ]),
       ),
@@ -296,7 +292,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: buildPassword()),
                               Container(
                                   height:
-                                      MediaQuery.of(context).size.height * 0.04,
+                                      MediaQuery.of(context).size.height * 0.05,
                                   child: buildForgotPassBtn()),
                             ],
                           ),

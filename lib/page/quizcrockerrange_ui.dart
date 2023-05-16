@@ -139,11 +139,84 @@ class _QuizCrockerRangeUIState extends State<QuizCrockerRangeUI> {
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: _questionIndex < questions_crockerrange.length
-                          ? Quiz(
-                              answerQuestion: _answerQuestion,
-                              questionIndex: _questionIndex,
-                              questions: questions_crockerrange,
-                              questionspic: questions_crockerrange,
+                          ? Column(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.black.withOpacity(0.9),
+                                        BlendMode.dstATop,
+                                      ),
+                                      image: AssetImage(
+                                        'img/quizbackground/quizbackground.png',
+                                      ),
+                                      fit: BoxFit.fill,
+                                    ),
+                                    border: Border.all(
+                                      color: GradientColors.happyFisher[1],
+                                      width: 5,
+                                    ),
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  width: 400,
+                                  height: 300,
+                                  child: Center(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                            height: 200,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.black,
+                                                  width: 3),
+                                            ),
+                                            margin: EdgeInsets.only(top: 10),
+                                            child: Image(
+                                              image: AssetImage(
+                                                questions_crockerrange[
+                                                                _questionIndex]
+                                                            ['questionPic']
+                                                        ?.toString() ??
+                                                    '',
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ) //Text
+                                            ),
+                                        Container(
+                                          width: double.infinity,
+                                          margin: EdgeInsets.only(
+                                              top: 20, left: 5, right: 5),
+                                          child: Text(
+                                            questions_crockerrange[
+                                                            _questionIndex]
+                                                        ['questionText']
+                                                    ?.toString() ??
+                                                '',
+                                            style: TextStyle(
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w600),
+                                            textAlign: TextAlign.center,
+                                          ), //Text
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Column(
+                                  children:
+                                      (questions_crockerrange[_questionIndex]
+                                                  ['answers']
+                                              as List<Map<String, Object>>)
+                                          .map((answer) {
+                                    return Answer(
+                                      () => _answerQuestion(
+                                          answer['score'] as int),
+                                      answer['text']?.toString() ?? '',
+                                    );
+                                  }).toList(),
+                                ),
+                              ],
                             ) //Quiz
                           : Result(_totalScore, _resetQuiz),
                     ),
@@ -159,98 +232,6 @@ class _QuizCrockerRangeUIState extends State<QuizCrockerRangeUI> {
   }
 }
 
-class Quiz extends StatelessWidget {
-  final List<Map<String, Object>> questions;
-  final List<Map<String, Object>> questionspic;
-  final int questionIndex;
-  final Function answerQuestion;
-
-  Quiz({
-    required this.questions,
-    required this.questionspic,
-    required this.answerQuestion,
-    required this.questionIndex,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.9), BlendMode.dstATop),
-                image: AssetImage('img/quizbackground/quizbackground.png'),
-                fit: BoxFit.fill,
-              ),
-              border:
-                  Border.all(color: GradientColors.happyFisher[1], width: 5),
-              borderRadius: BorderRadius.circular(4),
-            ),
-            width: 400,
-            height: 300,
-            child: Center(
-                child: Column(
-              children: [
-                QuestionPic(
-                    questions[questionIndex]['questionPic']?.toString() ?? ''),
-                Question(
-                  questions[questionIndex]['questionText']?.toString() ?? '',
-                ),
-              ],
-            ))), //Question
-
-        ...(questions[questionIndex]['answers'] as List<Map<String, Object>>)
-            .map((answer) {
-          return Answer(() => answerQuestion(answer['score']),
-              answer['text']?.toString() ?? '');
-        }).toList(),
-      ],
-    ); //Column
-  }
-}
-
-class Question extends StatelessWidget {
-  final String questionText;
-
-  Question(this.questionText);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      margin: EdgeInsets.only(top: 20, left: 5, right: 5),
-      child: Text(
-        questionText,
-        style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
-        textAlign: TextAlign.center,
-      ), //Text
-    ); //Container
-  }
-}
-
-class QuestionPic extends StatelessWidget {
-  final String questionPic;
-
-  QuestionPic(this.questionPic);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 200,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 3),
-        ),
-        margin: EdgeInsets.only(top: 10),
-        child: Image(
-          image: AssetImage(questionPic),
-          fit: BoxFit.cover,
-        ) //Text
-        ); //Container
-  }
-}
-
 class Answer extends StatelessWidget {
   final Function() selectHandler;
   final String answerText;
@@ -263,8 +244,8 @@ class Answer extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.only(bottom: 5, top: 5),
       child: ElevatedButton(
-        child: Text(answerText),
         onPressed: selectHandler,
+        child: Text(answerText),
       ), //RaisedButton
     ); //Container
   }
@@ -338,11 +319,11 @@ class Result extends StatelessWidget {
                     height: 20,
                   ), //Text
                   TextButton(
+                    onPressed: resetHandler,
                     child: Text(
                       'Restart Quiz!',
                       style: TextStyle(fontSize: 16),
-                    ), //Text
-                    onPressed: resetHandler,
+                    ),
                   ),
                   SizedBox(
                     height: 30,

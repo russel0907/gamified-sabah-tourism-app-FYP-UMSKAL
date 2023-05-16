@@ -47,149 +47,114 @@ class WelcomeUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: GradientColors.malibuBeach[1],
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.42,
-                  alignment: Alignment.topCenter,
-                  decoration: BoxDecoration(
-                    color: Colors.lightBlueAccent,
-                    image: DecorationImage(
-                        image: AssetImage("img/collage.jpg"), fit: BoxFit.fill),
+        body: Container(
+      height: double.infinity,
+      width: double.infinity,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+            GradientColors.aqua[1],
+            GradientColors.malibuBeach[1],
+            GradientColors.malibuBeach[0],
+          ])),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Stack(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.42,
+                alignment: Alignment.topCenter,
+                decoration: BoxDecoration(
+                  color: Colors.lightBlueAccent,
+                  image: DecorationImage(
+                      image: AssetImage("img/collage.jpg"), fit: BoxFit.fill),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              Center(
+                child: Text("WELCOME !",
+                    style:
+                        TextStyle(fontSize: 34, fontWeight: FontWeight.bold)),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              Text(
+                "Now, lets get started",
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              Container(
+                width: 170,
+                height: MediaQuery.of(context).size.height * 0.085,
+                padding: EdgeInsets.only(bottom: 5, top: 5),
+                child: TextButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: -0 ,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                    primary: Colors.blueAccent,
                   ),
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.18,
-                    ),
-                    Stack(
-                      children: <Widget>[
-                        // Stroked text as border.
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Text(
-                              'SABAH TOURISM',
-                              style: TextStyle(
-                                wordSpacing: 20,
-                                letterSpacing: 3,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 33,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 5
-                                  ..color = GradientColors.black[0],
-                              ),
-                            ),
-                          ),
-                        ),
-                        // Solid text as fill.
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(19),
-                            child: Text(
-                              'SABAH TOURISM',
-                              style: TextStyle(
-                                wordSpacing: 20,
-                                letterSpacing: 3,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 33,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                Center(
-                  child: Text("WELCOME !",
+                  child: Text(
+                    'Search Places',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/AppbeforeloginUI');
+                  },
+                ), //RaisedButton
+              ),
+              Container(
+                width: 170,
+                height: MediaQuery.of(context).size.height * 0.085,
+                padding: EdgeInsets.only(bottom: 5, top: 5),
+                child: TextButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: -2,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                    primary: Color.fromARGB(255, 219, 238, 255),
+                  ),
+                  child: Text(
+                    'Sign In',
+                    style: TextStyle(fontSize: 18, color: Colors.black),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/LoginUI');
+                  },
+                ), //RaisedButton
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.09,
+              ),
+              Column(
+                children: [
+                  Text(
+                    "Sabah Tourism",
+                    style: TextStyle(fontSize: 11, fontStyle: FontStyle.italic),
+                  ),
+                  Text("@2021 Sabah Tourism App. All Right Reserved",
                       style:
-                          TextStyle(fontSize: 34, fontWeight: FontWeight.bold)),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                Text(
-                  "Now, lets get started",
-                  style: TextStyle(fontSize: 16),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                Container(
-                  width: 170,
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  padding: EdgeInsets.only(bottom: 5, top: 5),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        side: BorderSide(width: 2, color: Colors.blueGrey),
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(32.0))),
-                        primary: Colors.blueAccent,
-                        onPrimary: Colors.black),
-                    child: Text(
-                      'Search Places',
-                      style: TextStyle(fontSize: 19, color: Colors.white),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/AppbeforeloginUI');
-                    },
-                  ), //RaisedButton
-                ),
-                Container(
-                  width: 170,
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  padding: EdgeInsets.only(bottom: 5, top: 5),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        side: BorderSide(width: 2, color: Colors.blueGrey),
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(32.0))),
-                        primary: Colors.blue[200],
-                        onPrimary: Colors.black),
-                    child: Text(
-                      'Sign In',
-                      style: TextStyle(fontSize: 19, color: Colors.black),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/LoginUI');
-                    },
-                  ), //RaisedButton
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.09,
-                ),
-                Column(
-                  children: [
-                    Text(
-                      "Sabah Tourism",
-                      style:
-                          TextStyle(fontSize: 11, fontStyle: FontStyle.italic),
-                    ),
-                    Text("@2021 Sabah Tourism App. All Right Reserved",
-                        style: TextStyle(
-                            fontSize: 11, fontStyle: FontStyle.italic)),
-                  ],
-                )
-              ],
-            ),
-          ],
-        ));
+                          TextStyle(fontSize: 11, fontStyle: FontStyle.italic)),
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
+    ));
   }
 }
 
